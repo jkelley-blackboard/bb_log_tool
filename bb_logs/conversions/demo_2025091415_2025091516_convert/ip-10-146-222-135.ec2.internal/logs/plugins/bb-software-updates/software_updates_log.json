@@ -1,0 +1,4 @@
+[
+{"message": "2025-09-15 11:39:29,413 WARN  [connector-36:userId=_31905_1, sessionId=6E13227144F0BEFD8205594EC0A7CA0B, requestMethod=POST, requestUri=/webapps/portal/execute/tabs/tabAction] PageNotFound: No mapping for POST /webapps/software-updates/updates-module/view", "path": "/usr/local/blackboard/logs/plugins/bb-software-updates/software-updates.log", "host": "ip-10-146-222-135.ec2.internal"},
+{"message": "2025-09-15 11:39:29,413 WARN  [connector-36: userId=_31905_1, sessionId=6E13227144F0BEFD8205594EC0A7CA0B, requestMethod=POST, requestUri=/webapps/portal/execute/tabs/tabAction] PageNotFound: No mapping for POST /webapps/software-updates/updates-module/view", "path": "/usr/local/blackboard/logs/plugins/bb-software-updates/software-updates.log", "host": "ip-10-146-222-135.ec2.internal"}
+]

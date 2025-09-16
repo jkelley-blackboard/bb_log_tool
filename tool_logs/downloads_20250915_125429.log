@@ -1,0 +1,13 @@
+2025-09-15 12:54:29,907 [INFO] === Blackboard Log Downloader Run ===
+2025-09-15 12:54:29,907 [INFO] Host: https://demo.blackboard.com
+2025-09-15 12:54:29,907 [INFO] Username: jk***
+2025-09-15 12:54:29,910 [INFO] Server TZ: America/New_York
+2025-09-15 12:54:29,910 [INFO] Range: 2025-09-14 07:00:00-04:00 \u2192 2025-09-15 08:00:00-04:00
+2025-09-15 12:54:29,910 [INFO] Dry run: False
+2025-09-15 12:54:29,910 [INFO] Files found: 26
+2025-09-15 12:54:29,910 [INFO] Missing directories: []
+2025-09-15 12:54:29,910 [INFO] Download folder: ./bb_logs/downloads\demo_2025091411_2025091512
+2025-09-15 12:54:40,155 [ERROR] Failed to process file: name 'file_path' is not defined
+2025-09-15 12:56:56,128 [ERROR] Failed to process file: name 'file_path' is not defined
+2025-09-15 12:57:43,816 [ERROR] Failed to process file: name 'file_path' is not defined
+2025-09-15 12:58:16,316 [ERROR] Failed to process file: name 'file_path' is not defined

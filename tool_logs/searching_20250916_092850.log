@@ -1,0 +1,5 @@
+2025-09-16 09:28:50,899 [INFO] Scanning for converted directories in base directory: ./bb_logs/conversions
+2025-09-16 09:28:50,900 [INFO] Found converted_files.json in: ./bb_logs/conversions\demo_2025091415_2025091516_convert
+2025-09-16 09:28:50,900 [INFO] Found 1 converted directories.
+2025-09-16 09:28:50,903 [INFO] Filtering converted files from: ./bb_logs/conversions\demo_2025091415_2025091516_convert\converted_files.json for directory: ./bb_logs/conversions\demo_2025091415_2025091516_convert and log_type: authentication
+2025-09-16 09:28:50,922 [INFO] Found 0 matching files.

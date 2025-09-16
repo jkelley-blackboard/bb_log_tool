@@ -1,0 +1,84 @@
+2025-09-15 13:03:16,749 [INFO] === Blackboard Log Conversion Run ===
+2025-09-15 13:03:16,752 [INFO] Starting conversion from './bb_logs/downloads\demo_2025091411_2025091512' to './bb_logs/conversions\demo_2025091411_2025091512_convert'
+2025-09-15 13:03:16,752 [INFO] Output type: json-distributed
+2025-09-15 13:03:16,754 [INFO] Total input files: 26
+2025-09-15 13:03:17,867 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.11.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:17,868 [INFO] ip-10-146-222-135.ec2.internal: 4531 entries
+2025-09-15 13:03:17,868 [INFO] No bad lines encountered.
+2025-09-15 13:03:18,420 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.12.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:18,420 [INFO] ip-10-146-222-135.ec2.internal: 4450 entries
+2025-09-15 13:03:18,420 [INFO] No bad lines encountered.
+2025-09-15 13:03:19,206 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.13.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:19,206 [INFO] ip-10-146-222-135.ec2.internal: 6100 entries
+2025-09-15 13:03:19,206 [INFO] No bad lines encountered.
+2025-09-15 13:03:19,734 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.14.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:19,735 [INFO] ip-10-146-222-135.ec2.internal: 4334 entries
+2025-09-15 13:03:19,735 [INFO] No bad lines encountered.
+2025-09-15 13:03:20,399 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.15.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:20,399 [INFO] ip-10-146-222-135.ec2.internal: 4540 entries
+2025-09-15 13:03:20,399 [INFO] No bad lines encountered.
+2025-09-15 13:03:21,970 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.16.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:21,970 [INFO] ip-10-146-222-135.ec2.internal: 9211 entries
+2025-09-15 13:03:21,970 [INFO] No bad lines encountered.
+2025-09-15 13:03:22,698 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.17.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:22,698 [INFO] ip-10-146-222-135.ec2.internal: 4310 entries
+2025-09-15 13:03:22,700 [INFO] No bad lines encountered.
+2025-09-15 13:03:23,720 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.18.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:23,720 [INFO] ip-10-146-222-135.ec2.internal: 5556 entries
+2025-09-15 13:03:23,720 [INFO] No bad lines encountered.
+2025-09-15 13:03:25,085 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.19.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:25,086 [INFO] ip-10-146-222-135.ec2.internal: 8178 entries
+2025-09-15 13:03:25,086 [INFO] No bad lines encountered.
+2025-09-15 13:03:25,769 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.20.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:25,769 [INFO] ip-10-146-222-135.ec2.internal: 4390 entries
+2025-09-15 13:03:25,769 [INFO] No bad lines encountered.
+2025-09-15 13:03:26,509 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.21.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:26,510 [INFO] ip-10-146-222-135.ec2.internal: 4246 entries
+2025-09-15 13:03:26,510 [INFO] No bad lines encountered.
+2025-09-15 13:03:27,410 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.22.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:27,410 [INFO] ip-10-146-222-135.ec2.internal: 4459 entries
+2025-09-15 13:03:27,410 [INFO] No bad lines encountered.
+2025-09-15 13:03:30,344 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.14.23.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:30,344 [INFO] ip-10-146-222-135.ec2.internal: 8336 entries
+2025-09-15 13:03:30,344 [INFO] No bad lines encountered.
+2025-09-15 13:03:30,971 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.0.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:30,971 [INFO] ip-10-146-222-135.ec2.internal: 4702 entries
+2025-09-15 13:03:30,971 [INFO] No bad lines encountered.
+2025-09-15 13:03:31,673 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.1.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:31,673 [INFO] ip-10-146-222-135.ec2.internal: 4673 entries
+2025-09-15 13:03:31,673 [INFO] No bad lines encountered.
+2025-09-15 13:03:32,470 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.10.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:32,470 [INFO] ip-10-146-222-135.ec2.internal: 4662 entries
+2025-09-15 13:03:32,470 [INFO] No bad lines encountered.
+2025-09-15 13:03:33,184 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.11.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:33,184 [INFO] ip-10-146-222-135.ec2.internal: 4354 entries
+2025-09-15 13:03:33,185 [INFO] No bad lines encountered.
+2025-09-15 13:03:33,891 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.12.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:33,891 [INFO] ip-10-146-222-135.ec2.internal: 4385 entries
+2025-09-15 13:03:33,891 [INFO] No bad lines encountered.
+2025-09-15 13:03:34,629 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.2.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:34,631 [INFO] ip-10-146-222-135.ec2.internal: 4432 entries
+2025-09-15 13:03:34,631 [INFO] No bad lines encountered.
+2025-09-15 13:03:35,293 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.3.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:35,293 [INFO] ip-10-146-222-135.ec2.internal: 4284 entries
+2025-09-15 13:03:35,294 [INFO] No bad lines encountered.
+2025-09-15 13:03:36,302 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.4.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:36,302 [INFO] ip-10-146-222-135.ec2.internal: 6376 entries
+2025-09-15 13:03:36,302 [INFO] No bad lines encountered.
+2025-09-15 13:03:37,698 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.5.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:37,698 [INFO] ip-10-146-222-135.ec2.internal: 4873 entries
+2025-09-15 13:03:37,698 [INFO] No bad lines encountered.
+2025-09-15 13:03:39,861 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.6.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:39,861 [INFO] ip-10-146-222-135.ec2.internal: 7716 entries
+2025-09-15 13:03:39,861 [INFO] No bad lines encountered.
+2025-09-15 13:03:40,690 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.7.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:40,690 [INFO] ip-10-146-222-135.ec2.internal: 4467 entries
+2025-09-15 13:03:40,690 [INFO] No bad lines encountered.
+2025-09-15 13:03:41,782 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.8.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:41,782 [INFO] ip-10-146-222-135.ec2.internal: 4541 entries
+2025-09-15 13:03:41,782 [INFO] No bad lines encountered.
+2025-09-15 13:03:42,815 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\demo_2025091411_2025091512\2025.9.15.9.ip-10-146-222-135.ec2.internal.txt ===
+2025-09-15 13:03:42,815 [INFO] ip-10-146-222-135.ec2.internal: 4506 entries
+2025-09-15 13:03:42,815 [INFO] No bad lines encountered.
+2025-09-15 13:03:42,818 [INFO] Conversion summary saved to: ./bb_logs/conversions\demo_2025091411_2025091512_convert\conversion_output.json
+2025-09-15 13:03:42,820 [INFO] Total files created: 248

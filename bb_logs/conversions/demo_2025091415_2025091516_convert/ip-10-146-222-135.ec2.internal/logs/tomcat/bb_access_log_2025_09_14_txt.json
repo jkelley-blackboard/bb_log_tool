@@ -1,0 +1,4 @@
+[
+{"message": "10.168.19.229 127.0.0.1 connector-46 - [14/Sep/2025:23:59:52 -0400] \"GET /webapps/portal/healthCheck HTTP/1.1\" 200 642 \"ELB-HealthChecker/1.0\" \"-\" 5 642", "path": "/usr/local/blackboard/logs/tomcat/bb-access-log.2025-09-14.txt", "host": "ip-10-146-222-135.ec2.internal"},
+{"message": "10.168.38.133 127.0.0.1 connector-23 - [14/Sep/2025:23:59:54 -0400] \"GET /webapps/portal/healthCheck HTTP/1.1\" 200 642 \"ELB-HealthChecker/1.0\" \"-\" 4 642", "path": "/usr/local/blackboard/logs/tomcat/bb-access-log.2025-09-14.txt", "host": "ip-10-146-222-135.ec2.internal"}
+]

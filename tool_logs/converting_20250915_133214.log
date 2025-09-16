@@ -1,0 +1,197 @@
+2025-09-15 13:32:14,201 [INFO] === Conversion Started ===
+2025-09-15 13:32:14,201 [INFO] Source folder: ./bb_logs/downloads\demo_2025091411_2025091512
+2025-09-15 13:32:14,202 [INFO] Output folder: ./bb_logs/conversions\demo_2025091411_2025091512_convert
+2025-09-15 13:32:14,202 [INFO] Output type: flat
+2025-09-15 13:32:15,989 [INFO] JSON manifest of converted files saved to: bb_logs\conversions\demo_2025091411_2025091512_convert\converted_files.json
+2025-09-15 13:32:15,989 [INFO] === Conversion Completed ===
+2025-09-15 13:32:15,989 [INFO] Total files converted: 26
+2025-09-15 13:32:15,989 [INFO] Execution log saved to: ./tool_logs/converting_20250915_133214.log
+2025-09-15 13:38:37,844 [INFO] === Conversion Started ===
+2025-09-15 13:38:37,844 [INFO] Source folder: ./bb_logs/downloads\demo_2025091411_2025091512
+2025-09-15 13:38:37,844 [INFO] Output folder: ./bb_logs/conversions\demo_2025091411_2025091512_convert
+2025-09-15 13:38:37,844 [INFO] Output type: flat
+2025-09-15 13:38:39,000 [INFO] JSON manifest of converted files saved to: bb_logs\conversions\demo_2025091411_2025091512_convert\converted_files.json
+2025-09-15 13:38:39,000 [INFO] === Conversion Completed ===
+2025-09-15 13:38:39,000 [INFO] Total files converted: 26
+2025-09-15 13:38:39,000 [INFO] Execution log saved to: ./tool_logs/converting_20250915_133837.log
+2025-09-15 13:46:46,657 [INFO] === Blackboard Log Downloader Run ===
+2025-09-15 13:46:46,657 [INFO] Host: https://nahe.blackboard.com
+2025-09-15 13:46:46,657 [INFO] Username: jk***
+2025-09-15 13:46:46,657 [INFO] Server TZ: America/New_York
+2025-09-15 13:46:46,720 [INFO] Dry run: False
+2025-09-15 13:46:46,720 [INFO] Files found: 52
+2025-09-15 13:46:46,720 [INFO] Missing directories: []
+2025-09-15 13:46:46,720 [INFO] Download folder: ./bb_logs/downloads\nahe_2025091412_2025091513
+2025-09-15 13:46:54,627 [INFO] === Conversion Started ===
+2025-09-15 13:46:54,627 [INFO] Source folder: ./bb_logs/downloads\nahe_2025091412_2025091513
+2025-09-15 13:46:54,627 [INFO] Output folder: ./bb_logs/conversions\nahe_2025091412_2025091513_convert
+2025-09-15 13:46:54,628 [INFO] Output type: json-distributed
+2025-09-15 13:46:56,048 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.12.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:46:56,049 [INFO] ip-10-146-219-157.ec2.internal: 4414 entries
+2025-09-15 13:46:56,049 [INFO] No bad lines encountered.
+2025-09-15 13:46:56,563 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.12.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:46:56,563 [INFO] ip-10-146-230-85.ec2.internal: 4308 entries
+2025-09-15 13:46:56,563 [INFO] No bad lines encountered.
+2025-09-15 13:46:57,103 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.13.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:46:57,103 [INFO] ip-10-146-219-157.ec2.internal: 4408 entries
+2025-09-15 13:46:57,103 [INFO] No bad lines encountered.
+2025-09-15 13:46:57,627 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.13.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:46:57,627 [INFO] ip-10-146-230-85.ec2.internal: 4304 entries
+2025-09-15 13:46:57,627 [INFO] No bad lines encountered.
+2025-09-15 13:46:58,212 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.14.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:46:58,213 [INFO] ip-10-146-219-157.ec2.internal: 4590 entries
+2025-09-15 13:46:58,213 [INFO] No bad lines encountered.
+2025-09-15 13:46:58,724 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.14.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:46:58,724 [INFO] ip-10-146-230-85.ec2.internal: 4144 entries
+2025-09-15 13:46:58,725 [INFO] No bad lines encountered.
+2025-09-15 13:46:59,328 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.15.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:46:59,328 [INFO] ip-10-146-219-157.ec2.internal: 4942 entries
+2025-09-15 13:46:59,329 [INFO] No bad lines encountered.
+2025-09-15 13:46:59,830 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.15.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:46:59,830 [INFO] ip-10-146-230-85.ec2.internal: 4281 entries
+2025-09-15 13:46:59,830 [INFO] No bad lines encountered.
+2025-09-15 13:47:00,815 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.16.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:00,815 [INFO] ip-10-146-219-157.ec2.internal: 7574 entries
+2025-09-15 13:47:00,815 [INFO] No bad lines encountered.
+2025-09-15 13:47:01,861 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.16.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:01,861 [INFO] ip-10-146-230-85.ec2.internal: 7426 entries
+2025-09-15 13:47:01,861 [INFO] No bad lines encountered.
+2025-09-15 13:47:02,798 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.17.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:02,798 [INFO] ip-10-146-219-157.ec2.internal: 5836 entries
+2025-09-15 13:47:02,798 [INFO] No bad lines encountered.
+2025-09-15 13:47:03,578 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.17.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:03,578 [INFO] ip-10-146-230-85.ec2.internal: 4383 entries
+2025-09-15 13:47:03,578 [INFO] No bad lines encountered.
+2025-09-15 13:47:04,361 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.18.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:04,361 [INFO] ip-10-146-219-157.ec2.internal: 4779 entries
+2025-09-15 13:47:04,361 [INFO] No bad lines encountered.
+2025-09-15 13:47:04,985 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.18.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:04,985 [INFO] ip-10-146-230-85.ec2.internal: 4305 entries
+2025-09-15 13:47:04,985 [INFO] No bad lines encountered.
+2025-09-15 13:47:05,741 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.19.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:05,741 [INFO] ip-10-146-219-157.ec2.internal: 4663 entries
+2025-09-15 13:47:05,741 [INFO] === Bad Lines Report (first 10) ===
+2025-09-15 13:47:05,741 [INFO]   Line 2853: {"message":"Caused by: org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: \"{\"status\":404,\"code\":\"ApplicationNotFoundException\",\"message\":\"No application identified by 'null' was found or given version is not available for given application\"}
+2025-09-15 13:47:05,741 [INFO]   Line 2854: \"","path":"/usr/local/blackboard/logs/custom/x-bbgs-consulting-central.2025-09-14.log","host":"ip-10-146-219-157.ec2.internal","5db04cd44911d":"s3.learn.custom"}
+2025-09-15 13:47:05,741 [INFO] Total bad lines: 2
+2025-09-15 13:47:06,360 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.19.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:06,360 [INFO] ip-10-146-230-85.ec2.internal: 4137 entries
+2025-09-15 13:47:06,360 [INFO] No bad lines encountered.
+2025-09-15 13:47:07,001 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.20.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:07,001 [INFO] ip-10-146-219-157.ec2.internal: 4397 entries
+2025-09-15 13:47:07,001 [INFO] No bad lines encountered.
+2025-09-15 13:47:07,625 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.20.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:07,625 [INFO] ip-10-146-230-85.ec2.internal: 4303 entries
+2025-09-15 13:47:07,625 [INFO] === Bad Lines Report (first 10) ===
+2025-09-15 13:47:07,625 [INFO]   Line 1783: {"message":"Caused by: org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: \"{\"status\":404,\"code\":\"ApplicationNotFoundException\",\"message\":\"No application identified by 'null' was found or given version is not available for given application\"}
+2025-09-15 13:47:07,625 [INFO]   Line 1784: \"","path":"/usr/local/blackboard/logs/custom/x-bbgs-consulting-central.2025-09-14.log","host":"ip-10-146-230-85.ec2.internal","5db04cd44911d":"s3.learn.custom"}
+2025-09-15 13:47:07,625 [INFO] Total bad lines: 2
+2025-09-15 13:47:08,467 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.21.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:08,469 [INFO] ip-10-146-219-157.ec2.internal: 4048 entries
+2025-09-15 13:47:08,469 [INFO] No bad lines encountered.
+2025-09-15 13:47:09,268 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.21.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:09,268 [INFO] ip-10-146-230-85.ec2.internal: 3941 entries
+2025-09-15 13:47:09,268 [INFO] No bad lines encountered.
+2025-09-15 13:47:10,055 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.22.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:10,055 [INFO] ip-10-146-219-157.ec2.internal: 4207 entries
+2025-09-15 13:47:10,055 [INFO] No bad lines encountered.
+2025-09-15 13:47:10,673 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.22.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:10,673 [INFO] ip-10-146-230-85.ec2.internal: 3729 entries
+2025-09-15 13:47:10,673 [INFO] No bad lines encountered.
+2025-09-15 13:47:11,495 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.23.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:11,495 [INFO] ip-10-146-219-157.ec2.internal: 5285 entries
+2025-09-15 13:47:11,495 [INFO] No bad lines encountered.
+2025-09-15 13:47:12,204 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.14.23.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:12,204 [INFO] ip-10-146-230-85.ec2.internal: 4581 entries
+2025-09-15 13:47:12,204 [INFO] No bad lines encountered.
+2025-09-15 13:47:12,782 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.0.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:12,782 [INFO] ip-10-146-219-157.ec2.internal: 3996 entries
+2025-09-15 13:47:12,782 [INFO] No bad lines encountered.
+2025-09-15 13:47:13,407 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.0.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:13,407 [INFO] ip-10-146-230-85.ec2.internal: 3991 entries
+2025-09-15 13:47:13,407 [INFO] No bad lines encountered.
+2025-09-15 13:47:14,282 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.1.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:14,282 [INFO] ip-10-146-219-157.ec2.internal: 5708 entries
+2025-09-15 13:47:14,282 [INFO] No bad lines encountered.
+2025-09-15 13:47:15,065 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.1.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:15,065 [INFO] ip-10-146-230-85.ec2.internal: 4025 entries
+2025-09-15 13:47:15,066 [INFO] No bad lines encountered.
+2025-09-15 13:47:15,689 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.10.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:15,689 [INFO] ip-10-146-219-157.ec2.internal: 3950 entries
+2025-09-15 13:47:15,689 [INFO] No bad lines encountered.
+2025-09-15 13:47:16,322 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.10.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:16,322 [INFO] ip-10-146-230-85.ec2.internal: 4010 entries
+2025-09-15 13:47:16,322 [INFO] No bad lines encountered.
+2025-09-15 13:47:17,057 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.11.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:17,057 [INFO] ip-10-146-219-157.ec2.internal: 4578 entries
+2025-09-15 13:47:17,057 [INFO] No bad lines encountered.
+2025-09-15 13:47:17,861 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.11.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:17,861 [INFO] ip-10-146-230-85.ec2.internal: 4450 entries
+2025-09-15 13:47:17,861 [INFO] No bad lines encountered.
+2025-09-15 13:47:18,474 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.12.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:18,474 [INFO] ip-10-146-219-157.ec2.internal: 4047 entries
+2025-09-15 13:47:18,474 [INFO] No bad lines encountered.
+2025-09-15 13:47:19,157 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.12.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:19,157 [INFO] ip-10-146-230-85.ec2.internal: 4481 entries
+2025-09-15 13:47:19,157 [INFO] No bad lines encountered.
+2025-09-15 13:47:20,072 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.13.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:20,072 [INFO] ip-10-146-219-157.ec2.internal: 5503 entries
+2025-09-15 13:47:20,073 [INFO] No bad lines encountered.
+2025-09-15 13:47:20,737 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.13.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:20,737 [INFO] ip-10-146-230-85.ec2.internal: 4407 entries
+2025-09-15 13:47:20,737 [INFO] No bad lines encountered.
+2025-09-15 13:47:21,377 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.2.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:21,377 [INFO] ip-10-146-219-157.ec2.internal: 4068 entries
+2025-09-15 13:47:21,377 [INFO] No bad lines encountered.
+2025-09-15 13:47:21,938 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.2.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:21,938 [INFO] ip-10-146-230-85.ec2.internal: 3895 entries
+2025-09-15 13:47:21,938 [INFO] No bad lines encountered.
+2025-09-15 13:47:22,535 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.3.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:22,536 [INFO] ip-10-146-219-157.ec2.internal: 4187 entries
+2025-09-15 13:47:22,536 [INFO] No bad lines encountered.
+2025-09-15 13:47:23,060 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.3.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:23,061 [INFO] ip-10-146-230-85.ec2.internal: 3783 entries
+2025-09-15 13:47:23,061 [INFO] No bad lines encountered.
+2025-09-15 13:47:24,532 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.4.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:24,532 [INFO] ip-10-146-219-157.ec2.internal: 9955 entries
+2025-09-15 13:47:24,532 [INFO] No bad lines encountered.
+2025-09-15 13:47:25,073 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.4.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:25,073 [INFO] ip-10-146-230-85.ec2.internal: 3848 entries
+2025-09-15 13:47:25,073 [INFO] No bad lines encountered.
+2025-09-15 13:47:26,100 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.5.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:26,101 [INFO] ip-10-146-219-157.ec2.internal: 7345 entries
+2025-09-15 13:47:26,101 [INFO] No bad lines encountered.
+2025-09-15 13:47:26,668 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.5.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:26,668 [INFO] ip-10-146-230-85.ec2.internal: 3743 entries
+2025-09-15 13:47:26,668 [INFO] No bad lines encountered.
+2025-09-15 13:47:27,569 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.6.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:27,569 [INFO] ip-10-146-219-157.ec2.internal: 4545 entries
+2025-09-15 13:47:27,569 [INFO] === Bad Lines Report (first 10) ===
+2025-09-15 13:47:27,569 [INFO]   Line 964: {"message":"Caused by: org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: \"{\"status\":404,\"code\":\"ApplicationNotFoundException\",\"message\":\"No application identified by 'null' was found or given version is not available for given application\"}
+2025-09-15 13:47:27,569 [INFO]   Line 965: \"","path":"/usr/local/blackboard/logs/custom/x-bbgs-consulting-central.2025-09-15.log","host":"ip-10-146-219-157.ec2.internal","5db04cd44911d":"s3.learn.custom"}
+2025-09-15 13:47:27,569 [INFO] Total bad lines: 2
+2025-09-15 13:47:28,181 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.6.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:28,181 [INFO] ip-10-146-230-85.ec2.internal: 3962 entries
+2025-09-15 13:47:28,181 [INFO] No bad lines encountered.
+2025-09-15 13:47:29,038 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.7.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:29,038 [INFO] ip-10-146-219-157.ec2.internal: 4141 entries
+2025-09-15 13:47:29,038 [INFO] No bad lines encountered.
+2025-09-15 13:47:29,612 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.7.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:29,612 [INFO] ip-10-146-230-85.ec2.internal: 3915 entries
+2025-09-15 13:47:29,612 [INFO] No bad lines encountered.
+2025-09-15 13:47:30,245 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.8.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:30,246 [INFO] ip-10-146-219-157.ec2.internal: 4185 entries
+2025-09-15 13:47:30,246 [INFO] No bad lines encountered.
+2025-09-15 13:47:30,798 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.8.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:30,798 [INFO] ip-10-146-230-85.ec2.internal: 3743 entries
+2025-09-15 13:47:30,798 [INFO] No bad lines encountered.
+2025-09-15 13:47:31,346 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.9.ip-10-146-219-157.ec2.internal.txt ===
+2025-09-15 13:47:31,346 [INFO] ip-10-146-219-157.ec2.internal: 3898 entries
+2025-09-15 13:47:31,346 [INFO] No bad lines encountered.
+2025-09-15 13:47:32,001 [INFO] === json-distributed Conversion Completed for file: bb_logs\downloads\nahe_2025091412_2025091513\2025.9.15.9.ip-10-146-230-85.ec2.internal.txt ===
+2025-09-15 13:47:32,001 [INFO] ip-10-146-230-85.ec2.internal: 4082 entries
+2025-09-15 13:47:32,001 [INFO] No bad lines encountered.
+2025-09-15 13:47:32,001 [INFO] JSON manifest of converted files saved to: bb_logs\conversions\nahe_2025091412_2025091513_convert\converted_files.json
+2025-09-15 13:47:32,001 [INFO] === Conversion Completed ===
+2025-09-15 13:47:32,001 [INFO] Total files converted: 48
+2025-09-15 13:47:32,001 [INFO] Execution log saved to: ./tool_logs/converting_20250915_134654.log
