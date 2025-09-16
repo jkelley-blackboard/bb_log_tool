@@ -1,3 +1,0 @@
-[
-{"message": "timestamp=Sep 15 2025 05:33:50.325 EDT|app_vend=blackboard|app_name=learn|app_ver=3902.1.0-rel.7+6594dc4|evt_code=52|evt_name=unauthorized access|sev=4|cat=authentication|outcome=failure|dhost=demo.blackboard.com|src_ip=75.101.212.81|suid=|suser=|session_id=-1|msg=Unauthorized attempt to access resource and lacks valid authentication credentials for the target resource.|http_useragent=blackboard ally - accessibility checker - http://ally.ac|act=log|request=/learn/api/public/v1/institutionalHierarchy/nodes/_969_1/children", "path": "/usr/local/blackboard/logs/bb-security-log.txt", "host": "ip-10-146-222-135.ec2.internal"}
-]

@@ -1,4 +1,0 @@
-[
-{"message": "2025-09-15 09:10:19|b.p.c.w.c.CsaSessionRestClientWithCache|INFO |RID=a03f85c2a91942f4a32681123f822203|get collab session running instances from cache.", "path": "/usr/local/blackboard/logs/plugins/bb-collab-ultra/collab-ultra.log", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "2025-09-15 09:10:19|b.p.c.w.c.CsaSessionRestClientWithCache|INFO |RID=a03f85c2a91942f4a32681123f822203|get collab session running instances from cache.", "path": "/usr/local/blackboard/logs/plugins/bb-collab-ultra/collab-ultra.log", "host": "ip-10-146-222-135.ec2.internal"}
-]

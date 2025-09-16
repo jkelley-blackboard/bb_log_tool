@@ -1,15 +1,20 @@
-# ./modules/parser_utils.py
+# modules/parser_utils.py
+from __future__ import annotations
+
 import re
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, List, Optional
 
-# --------------------------
-# 1. LOG FIELDS
-# --------------------------
-LOG_FIELDS = {
+# -----------------------------
+# 1) Field catalog per log type
+# -----------------------------
+LOG_FIELDS: Dict[str, List[str]] = {
     "authentication": ["timestamp", "evt_name", "authnprovider", "dhost", "src_ip", "duid", "duser"],
-    "bb_access": ["timestamp", "client_ip", "host_ip", "connector", "method", "path", "protocol",
-                  "status", "size", "user_agent", "sev", "resp_size"],
+    "bb_access": [
+        "timestamp", "client_ip", "host_ip", "connector", "method", "path", "protocol",
+        "status", "size", "user_agent", "sev", "resp_size"
+    ],
     "bbcms": ["timestamp", "event", "user", "course_id", "item_id"],
     "security": ["timestamp", "user", "action", "status", "ip_address"],
     "services": ["timestamp", "service_name", "status", "message"],
@@ -22,34 +27,14 @@ LOG_FIELDS = {
     "gc_log": ["timestamp", "gc_type", "duration", "memory_before", "memory_after"],
     "catalina_log": ["timestamp", "level", "message"],
     "bb_ultra_ui": ["timestamp", "user", "action", "component"],
-    "data_integration": ["timestamp", "job_name", "status", "details"]
+    "data_integration": ["timestamp", "job_name", "status", "details"],
 }
 
-# --------------------------
-# 2. NOISE PATTERNS
-# --------------------------
-NOISE_PATTERNS = {
-    "authentication": [r'testuser', r'debug'],
-    "bb_access": [r'healthcheck', r'favicon\.ico'],
-    "bbcms": [r'/internal/monitoring/'],
-    "security": [r'testuser'],
-    "services": [r'debug', r'test_service'],
-    "partner_cloud": [r'dummy'],
-    "safeassign": [],
-    "stdout_stderr": [],
-    "collab_ultra": [],
-    "software_updates": [],
-    "application_log": [],
-    "gc_log": [],
-    "catalina_log": [],
-    "bb_ultra_ui": [],
-    "data_integration": []
-}
-
-# --------------------------
-# 3. FILE NAME TO LOG TYPE
-# --------------------------
-LOG_FILE_TYPES = {
+# -----------------------------
+# 2) Filename → type mapping
+# -----------------------------
+LOG_FILE_TYPES: Dict[str, str] = {
+    # Raw .log patterns (kept for completeness)
     r'.*authentication.*\.log$': 'authentication',
     r'.*bb-access.*\.log$': 'bb_access',
     r'.*bbcms.*\.log$': 'bbcms',
@@ -64,16 +49,51 @@ LOG_FILE_TYPES = {
     r'.*gc.*\.log$': 'gc_log',
     r'.*catalina.*\.log$': 'catalina_log',
     r'.*bb_ultra_ui.*\.log$': 'bb_ultra_ui',
-    r'.*data_integration.*\.log$': 'data_integration'
+    r'.*data_integration.*\.log$': 'data_integration',
 }
 
-# --------------------------
-# 4. PARSER FUNCTIONS
-# --------------------------
-def parse_authentication(entry):
+# Converted JSON filename patterns (match your sample names)
+LOG_FILE_TYPES.update({
+    r'.*bb_access_log.*_txt\.json$': 'bb_access',
+    r'.*bb_authentication_log.*_txt\.json$': 'authentication',
+    r'.*bb_security_log.*_txt\.json$': 'security',
+    r'.*bb_services_log.*_txt\.json$': 'services',
+
+    # Partner Cloud (and tasks variant)
+    r'.*x_bbgs_partner_cloud(_tasks)?_.*_log\.json$': 'partner_cloud',
+
+    # UI / Plugins
+    r'.*bb_ultra_ui_log\.json$': 'bb_ultra_ui',
+    r'.*collab_ultra_log\.json$': 'collab_ultra',
+    r'.*software_updates_log\.json$': 'software_updates',
+
+    # Telemetry/application variants with/without date
+    r'.*application(_\d{4}_\d{2}_\d{2})?_log\.json$': 'application_log',
+
+    # SafeAssign variants
+    r'.*safeassign_log(_txt)?(_\d{4}_\d{2}_\d{2})?_log\.json$': 'safeassign',
+
+    # Tomcat/GC/Catalina/stdout
+    r'.*gc_log\.json$': 'gc_log',
+    r'.*catalina_log(_txt)?\.json$': 'catalina_log',
+    r'.*stdout_stderr(_\d+)?_log\.json$': 'stdout_stderr',
+
+    # BBCMS / Data-integration / Other
+    r'.*bbcms_log_txt\.json$': 'bbcms',
+    r'.*data_integration(_\d{4}_\d{2}_\d{2})?_txt\.json$': 'data_integration',
+
+    # Optional: schema logs – map to services for now (adjust if needed)
+    r'.*bb_schema_log_txt\.json$': 'services',
+})
+
+# -----------------------------
+# 3) Parsers
+# -----------------------------
+
+def parse_authentication(entry: dict) -> Optional[dict]:
     message = entry.get("message", "")
-    parsed = {}
-    for pair in message.split("|"):
+    parsed: Dict[str, str] = {}
+    for pair in message.split("\n"):
         if "=" in pair:
             key, val = pair.split("=", 1)
             parsed[key.strip()] = val.strip()
@@ -82,39 +102,43 @@ def parse_authentication(entry):
             parsed["timestamp"] = datetime.strptime(parsed["timestamp"], "%b %d %Y %H:%M:%S.%f %Z")
         except Exception:
             pass
-    return {k: v for k, v in parsed.items() if k in LOG_FIELDS["authentication"]}
+    keep = {k: v for k, v in parsed.items() if k in LOG_FIELDS["authentication"]}
+    return keep
 
-def parse_bb_access(entry):
+
+def parse_bb_access(entry: dict) -> Optional[dict]:
     message = entry.get("message", "")
-    pattern = r'(?P<client_ip>\S+) (?P<host_ip>\S+) (?P<connector>\S+) - \[(?P<timestamp>.*?)\] "(?P<method>\S+) (?P<path>\S+) (?P<protocol>.*?)" (?P<status>\d+) (?P<size>\S+) "(?P<referer>.*?)" "(?P<user_agent>.*?)" (?P<sev>\d+) (?P<resp_size>\S+)'
-    match = re.match(pattern, message)
-    if not match:
+    pattern = (
+        r'(?P<client_ip>\S+) (?P<host_ip>\S+) (?P<connector>\S+) - '\
+        r'\[(?P<timestamp>.+?)\] "(?P<method>\S+) (?P<path>\S+) (?P<protocol>.+?)" '\
+        r'(?P<status>\d+) (?P<size>\S+) "(?P<referer>.*?)" "(?P<user_agent>.*?)" (?P<sev>\d+) (?P<resp_size>\S+)'
+    )
+    m = re.match(pattern, message)
+    if not m:
         return None
-    parsed = match.groupdict()
+    parsed = m.groupdict()
     if "timestamp" in parsed:
         try:
             parsed["timestamp"] = datetime.strptime(parsed["timestamp"], "%d/%b/%Y:%H:%M:%S %z")
         except Exception:
             pass
-    # Check for noise
-    for pat in NOISE_PATTERNS.get("bb_access", []):
-        if parsed.get("path") and re.search(pat, parsed["path"]):
-            return None
-    return {k: v for k, v in parsed.items() if k in LOG_FIELDS["bb_access"]}
+    keep = {k: v for k, v in parsed.items() if k in LOG_FIELDS["bb_access"]}
+    return keep
 
-# Generic parser
-def parse_generic(entry, log_type):
+
+def parse_generic(entry: dict, log_type: str) -> Optional[dict]:
     message = entry.get("message", "")
-    parsed = {}
-    for pair in message.split("|"):
+    parsed: Dict[str, str] = {}
+    for pair in message.split("\n"):
         if "=" in pair:
             key, val = pair.split("=", 1)
             parsed[key.strip()] = val.strip()
-    return {k: v for k, v in parsed.items() if k in LOG_FIELDS.get(log_type, [])}
+    keep = {k: v for k, v in parsed.items() if k in LOG_FIELDS.get(log_type, [])}
+    return keep
 
-# --------------------------
-# 5. PARSER DISPATCH
-# --------------------------
+# -----------------------------
+# 4) Dispatch & helpers
+# -----------------------------
 LOG_PARSERS = {
     "authentication": parse_authentication,
     "bb_access": parse_bb_access,
@@ -130,53 +154,44 @@ LOG_PARSERS = {
     "gc_log": lambda e: parse_generic(e, "gc_log"),
     "catalina_log": lambda e: parse_generic(e, "catalina_log"),
     "bb_ultra_ui": lambda e: parse_generic(e, "bb_ultra_ui"),
-    "data_integration": lambda e: parse_generic(e, "data_integration")
+    "data_integration": lambda e: parse_generic(e, "data_integration"),
 }
 
-# --------------------------
-# 6. HELPER FUNCTIONS
-# --------------------------
-def get_log_type_from_filename(filename):
-    """Return the log type based on filename using regex rules."""
+
+def get_log_type_from_filename(filename: str) -> Optional[str]:
     for pattern, log_type in LOG_FILE_TYPES.items():
         if re.match(pattern, filename, re.IGNORECASE):
             return log_type
     return None
 
-def detect_log_type(filepath):
-    """Wrapper for backwards compatibility with search.py"""
+
+def detect_log_type(filepath: str) -> Optional[str]:
     return get_log_type_from_filename(Path(filepath).name)
 
-def get_log_fields(log_type):
-    """Return all field names for a given log type."""
+
+def get_log_fields(log_type: str) -> List[str]:
     return LOG_FIELDS.get(log_type, [])
 
-def parse_log_entry(entry, log_type, file_path=None):
-    """
-    Parse a single log entry with optional file path context.
-    Automatically adds _file_path and _file_name to parsed results.
-    Returns None if the record is noisy/ignored.
-    """
+
+def parse_log_entry(entry: dict, log_type: str, file_path: Optional[str] = None) -> Optional[dict]:
     parser = LOG_PARSERS.get(log_type)
     if not parser:
+        # Unknown type; attach minimal context
         return {
             "_file_path": file_path,
             "_file_name": Path(file_path).name if file_path else None,
             "raw_message": entry.get("message"),
             "host": entry.get("host"),
-            "path": entry.get("path")
+            "path": entry.get("path"),
         }
-
     parsed = parser(entry)
     if parsed is None:
-        return None  # noisy or ignored record
-
-    # Attach metadata
+        return None
     parsed.update({
         "_file_path": file_path,
         "_file_name": Path(file_path).name if file_path else None,
         "raw_message": entry.get("message"),
         "host": entry.get("host"),
-        "path": entry.get("path")
+        "path": entry.get("path"),
     })
     return parsed

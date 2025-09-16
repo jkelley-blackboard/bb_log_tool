@@ -1,6 +1,0 @@
-2025-09-15 13:07:52,531 [INFO] === Blackboard Log Conversion Run ===
-2025-09-15 13:07:52,536 [INFO] Starting conversion from './bb_logs/downloads\demo_2025091411_2025091512' to './bb_logs/conversions\demo_2025091411_2025091512_convert'
-2025-09-15 13:07:52,536 [INFO] Output type: json-legacy
-2025-09-15 13:07:52,537 [INFO] Total input files: 52
-2025-09-15 13:07:58,532 [INFO] Conversion summary saved to: ./bb_logs/conversions\demo_2025091411_2025091512_convert\conversion_output.json
-2025-09-15 13:07:58,532 [INFO] Total files created: 1

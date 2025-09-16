@@ -1,8 +1,0 @@
-[
-{"message": "2025-09-15 00:00:00 -0400 - [INFORMATION] CREATE OR REPLACE FUNCTION safe_pg_get_indexdef(i oid, n int, b bool) RETURNS varchar AS $$", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "BEGIN", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "    RETURN pg_catalog.pg_get_indexdef(i,n,b);", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "EXCEPTION WHEN others THEN RETURN '';", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "END;", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "$$ LANGUAGE plpgsql SET search_path=public,code_3902_1_0_rel_7_6594dc4 IMMUTABLE RETURNS NULL ON NULL INPUT", "path": "/usr/local/blackboard/logs/bb-schema-log.txt", "host": "ip-10-146-222-135.ec2.internal"}
-]

@@ -1,4 +1,0 @@
-[
-{"message": "WARN [2025-09-15 09:10:16][261:c.b.c.u.service.impl.CloudRestExchanger       ] : Executing web service as a system call due to override flag. userBatchUid=mrohan, courseBatchUid=fk_fai", "path": "/usr/local/blackboard/logs/x-bbgs-partner-cloud.2025-09-15.log", "host": "ip-10-146-222-135.ec2.internal"},
-{"message": "WARN [2025-09-15 09:10:16][261:c.b.c.u.service.impl.CloudRestExchanger       ] : Executing web service as a system call due to override flag. userBatchUid=mrohan, courseBatchUid=fk_fai", "path": "/usr/local/blackboard/logs/x-bbgs-partner-cloud.2025-09-15.log", "host": "ip-10-146-222-135.ec2.internal"}
-]
