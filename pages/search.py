@@ -1,11 +1,13 @@
 # ./pages/search.py
+
 import streamlit as st
 from pathlib import Path
+import os
 import json
 
 from modules.parser_utils import LOG_FIELDS, parse_log_entry, get_log_fields, get_log_type_from_filename
 from modules.search_utils import (
-    find_converted_directories,
+    get_conversion_subdirs_with_metadata,
     filter_converted_files_by_type_and_dir,
     filter_logs
 )
@@ -23,19 +25,20 @@ def run():
         st.header("Search Inputs")
 
         # Load available converted directories after page layout
-        converted_dirs = find_converted_directories(base_dir="./bb_logs/conversions")
+        converted_dirs = get_conversion_subdirs_with_metadata(source_path="./bb_logs/conversions")
         if not converted_dirs:
             st.error("No converted directories with converted_files.json found.")
             return
 
-        dir_options = {Path(d).name: (d, cf) for d, cf in converted_dirs}
+        dir_options = {Path(d).name: (d, data) for d, data in converted_dirs}
         selected_label = st.selectbox("Select Converted Directory", options=list(dir_options.keys()))
-        selected_dir, converted_file_path = dir_options[selected_label]
+        selected_dir, converted_data = dir_options[selected_label]
 
         # Select log type
         selected_type = st.selectbox("Select Log Type", options=list(LOG_FIELDS.keys()))
 
         # Get matching files
+        converted_file_path = os.path.join(selected_dir, "converted_files.json")
         matching_files = filter_converted_files_by_type_and_dir(
             converted_file_path, selected_dir, selected_type
         )
@@ -66,10 +69,10 @@ def run():
                 try:
                     with open(f, "r", encoding="utf-8") as fh:
                         entries = json.load(fh)
-                        for e in entries:
-                            parsed = parse_log_entry(e, selected_type, file_path=f)
-                            if include_noisy or parsed is not None:
-                                parsed_entries.append(parsed if parsed is not None else e)
+                    for e in entries:
+                        parsed = parse_log_entry(e, selected_type, file_path=f)
+                        if include_noisy or parsed is not None:
+                            parsed_entries.append(parsed if parsed is not None else e)
                 except Exception as ex:
                     st.error(f"Failed to load {f}: {ex}")
 

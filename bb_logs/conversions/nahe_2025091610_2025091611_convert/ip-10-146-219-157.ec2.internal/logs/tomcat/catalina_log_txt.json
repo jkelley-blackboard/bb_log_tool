@@ -1,0 +1,4 @@
+[
+{"message": "INFO 2025-09-16 06:12:53,795 OkHttp https://notif-websockets-us-east-1.prod.notifications.api.blackboard.com/... com.microsoft.signalr.WebSocketTransport - WebSocket transport connected to: wss://notif-websockets-us-east-1.prod.notifications.api.blackboard.com/notifications?id=_4hHAd65Bx7JtjbkWY20SQ.", "path": "/usr/local/blackboard/logs/tomcat/catalina-log.txt", "host": "ip-10-146-219-157.ec2.internal"},
+{"message": "INFO 2025-09-16 06:12:53,797 OkHttp https://notif-websockets-us-east-1.prod.notifications.api.blackboard.com/... com.microsoft.signalr.HubConnection - HubConnection started.", "path": "/usr/local/blackboard/logs/tomcat/catalina-log.txt", "host": "ip-10-146-219-157.ec2.internal"}
+]
