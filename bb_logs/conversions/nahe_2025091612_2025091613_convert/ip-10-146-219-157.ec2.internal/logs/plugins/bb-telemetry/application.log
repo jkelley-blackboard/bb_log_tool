@@ -1,8 +1,0 @@
-2025-09-16 09:18:34,917 INFO  [bb-tasks: bb.telemetry.scheduled.table.export] TaskRunner: starting task TableExportTimerTask
-2025-09-16 09:18:34,917 INFO  [bb-tasks: bb.telemetry.scheduled.table.export] TaskRunner: starting task bb.telemetry.scheduled.table.export
-2025-09-16 09:18:34,917 INFO  [bb-tasks: bb.telemetry.scheduled.table.export] TaskRunner: starting task TableExportTimerTask
-2025-09-16 09:18:34,917 INFO  [bb-tasks: bb.telemetry.scheduled.table.export] TaskRunner: starting task bb.telemetry.scheduled.table.export
-2025-09-16 09:18:34,920 WARN  [scala-execution-context-global-544] S3ExportHandler: Starting s3 upload of file: /usr/local/blackboard/apps/tomcat/temp/core/ExportCompleteEvent-AZlSrVOhqvrtUDhQar-U-aab21143-d0ec-4087-9777-fcd47f5e32a7.avro with rowcount = 1
-2025-09-16 09:18:34,920 WARN  [scala-execution-context-global-544] S3ExportHandler: Starting s3 upload of file: /usr/local/blackboard/apps/tomcat/temp/core/ExportCompleteEvent-AZlSrVOhqvrtUDhQar-U-aab21143-d0ec-4087-9777-fcd47f5e32a7.avro with rowcount = 1
-2025-09-16 09:18:35,062 WARN  [scala-execution-context-global-544] S3ExportHandler: Finished s3 upload of file: /usr/local/blackboard/apps/tomcat/temp/core/ExportCompleteEvent-AZlSrVOhqvrtUDhQar-U-aab21143-d0ec-4087-9777-fcd47f5e32a7.avro
-2025-09-16 09:18:35,062 WARN  [scala-execution-context-global-544] S3ExportHandler: Finished s3 upload of file: /usr/local/blackboard/apps/tomcat/temp/core/ExportCompleteEvent-AZlSrVOhqvrtUDhQar-U-aab21143-d0ec-4087-9777-fcd47f5e32a7.avro
