@@ -52,7 +52,7 @@ LOG_FILE_TYPES: Dict[str, str] = {
     r'.*data_integration.*\.log$': 'data_integration',
 }
 
-# Converted JSON filename patterns (match your sample names)
+# Converted JSON filename patterns (match user's sample names)
 LOG_FILE_TYPES.update({
     r'.*bb_access_log.*_txt\.json$': 'bb_access',
     r'.*bb_authentication_log.*_txt\.json$': 'authentication',
@@ -109,8 +109,8 @@ def parse_authentication(entry: dict) -> Optional[dict]:
 def parse_bb_access(entry: dict) -> Optional[dict]:
     message = entry.get("message", "")
     pattern = (
-        r'(?P<client_ip>\S+) (?P<host_ip>\S+) (?P<connector>\S+) - '\
-        r'\[(?P<timestamp>.+?)\] "(?P<method>\S+) (?P<path>\S+) (?P<protocol>.+?)" '\
+        r'(?P<client_ip>\S+) (?P<host_ip>\S+) (?P<connector>\S+) - '
+        r'\[(?P<timestamp>.+?)\] "(?P<method>\S+) (?P<path>\S+) (?P<protocol>.+?)" '
         r'(?P<status>\d+) (?P<size>\S+) "(?P<referer>.*?)" "(?P<user_agent>.*?)" (?P<sev>\d+) (?P<resp_size>\S+)'
     )
     m = re.match(pattern, message)
@@ -176,7 +176,6 @@ def get_log_fields(log_type: str) -> List[str]:
 def parse_log_entry(entry: dict, log_type: str, file_path: Optional[str] = None) -> Optional[dict]:
     parser = LOG_PARSERS.get(log_type)
     if not parser:
-        # Unknown type; attach minimal context
         return {
             "_file_path": file_path,
             "_file_name": Path(file_path).name if file_path else None,

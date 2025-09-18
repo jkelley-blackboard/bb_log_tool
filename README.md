@@ -27,9 +27,35 @@ The application consists of three main components:
 - WebDAV client
 - Anthology's `convertlogs.py` module
 
-## 📦 Future Enhancements
+# BB Log Search — Session DB (DuckDB) Add‑On
 
-- Complete implementation of `json-distributed` format.
-- Advanced search capabilities across distributed logs.
-- Export and visualization features.
 
+## What you get
+- Two‑column **Streamlit page** (`pages/search.py`) that:
+  - Discovers runs via `converted_files.json`
+  - Builds a **type inventory** before enabling the log type selector
+  - Provides a **Create / Overwrite search database** button
+  - Runs **structured queries** and optional **FTS (free‑text)** queries against the DB
+- Utilities in `modules/search_utils.py` to:
+  - Read the index robustly (JSON or whitespace list)
+  - Build inventories by log type
+  - Parse json‑distributed logs into a **DuckDB** file (`.searchdb/<session>/<log_type>.duckdb`)
+  - Query the DB with structured filters or BM25 (FTS)
+- Updated `modules/parser_utils.py` filename patterns to recognize your converted JSON names
+
+
+
+## How it works
+1. Pick a **conversion directory** (must contain `converted_files.json`).
+2. The page scans the index to build a **type inventory** (no file I/O yet).
+3. Pick a **log type** → click **Create / Overwrite search database**.
+   - This parses the selected files once and writes a session DB here:
+     ```
+     <conversion_dir>/.searchdb/<session_id>/<log_type>.duckdb
+     ```
+   - It also tries to build a small **FTS index** over `message`.
+4. Run **Structured** or **FTS** searches against the DB.
+
+## Notes
+- The DB is **session‑specific** to avoid collisions; feel free to pin a session id via `BB_SEARCH_SESSION_ID` env var if needed.
+- For very large runs, consider building only a date window or moving to a Parquet‑backed design later. The current approach is optimized for fast, local exploration with minimal setup.

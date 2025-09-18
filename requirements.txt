@@ -2,4 +2,6 @@ webdavclient3
 streamlit
 python-dateutil
 pytz
-tzlocal 
+tzlocal
+duckdb>=1.3.0
+pandas
