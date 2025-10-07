@@ -1,0 +1,3 @@
+# Ignore all files in these directories
+bb_logs/
+tool_logs/
