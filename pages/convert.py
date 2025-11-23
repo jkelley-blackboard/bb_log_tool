@@ -1,3 +1,5 @@
+
+# pages/convert.py
 import streamlit as st
 from modules.convert_utils import convert_logs
 import os
@@ -5,7 +7,6 @@ import shutil
 from datetime import datetime
 
 def run():
-    st.set_page_config(page_title="BB Log Converter", layout="wide")
     st.header("Blackboard Log Tools")
     st.subheader("⚙️ Convert Downloaded Logs")
 
@@ -18,7 +19,6 @@ def run():
     with left_col:
         downloads_root = "./bb_logs/downloads"
         all_dirs = [f for f in os.listdir(downloads_root) if os.path.isdir(os.path.join(downloads_root, f))]
-
         if not all_dirs:
             st.warning("No downloaded log folders found. Please download logs first.")
         else:
@@ -32,7 +32,6 @@ def run():
                 value=default_conversion_root,
                 help="Override the default folder where converted logs will be saved."
             )
-
             final_conversion_path = os.path.join(conversion_root, f"{folder_name}_convert")
             st.markdown(f"**Final Conversion Folder:** `{final_conversion_path}`")
 
@@ -49,7 +48,7 @@ def run():
             - Output format is now fixed to **flat**.
             - Check that your selected start/end date and hour match the logs you downloaded.
             - Conversion logs will be saved in ./tool_logs.
-            """, unsafe_allow_html=True)
+            """)
 
     # ==========================
     # RIGHT COLUMN - OUTPUT MESSAGES
@@ -65,7 +64,6 @@ def run():
                     os.makedirs(final_conversion_path, exist_ok=True)
                     log_file_path = f"./tool_logs/converting_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
                     os.makedirs("./tool_logs", exist_ok=True)
-
                     with st.spinner("Converting logs..."):
                         convert_logs(
                             source_path=source_dir,

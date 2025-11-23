@@ -1,9 +1,14 @@
-streamlit>=1.25.0
-duckdb>=0.9.2
-pandas>=2.0.0
-numpy>=1.24.0
-pyarrow>=13.0.0
-tzlocal>=4.0
-webdavclient3>=1.6.0
-python-dateutil>=2.8.2
-requests>=2.31.0
+# App framework
+streamlit==1.38.0
+
+# WebDAV client
+webdavclient3==3.14
+
+# Analysis
+pandas==2.2.2
+
+# Timezone helpers (optional)
+tzlocal==5.2
+
+# HTTP (optional health check)
+requests==2.32.3

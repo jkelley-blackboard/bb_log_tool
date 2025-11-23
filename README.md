@@ -1,61 +1,205 @@
-# Blackboard Log Converter Tool
+# Blackboard Log Tool (bb_log_tool)
 
-This is a Python-based Streamlit application designed to simplify the processing and analysis of Blackboard Learn log files.
+A lightweight, Streamlit-based utility for **downloading**, **converting**, and **analyzing** Blackboard session logs.  
+It wraps a simple WebDAV workflow (for `sessiondebuglogs`), a flat converter, and a basic analysis UI.
 
-## 🚀 Overview
+---
 
-The application consists of three main components:
+## ✨ What it does
 
-1. **Log Package Downloader**
-   - Uses WebDAV to connect to a Blackboard deployment.
-   - Downloads log packages based on a user-specified date range.
+- **Download**: Scans `YYMMDD` folders under `/bbcswebdav/internal/sessiondebuglogs`, iterates all user subfolders, and downloads log files named `N.log`.  
+  - Renames each downloaded file as: **`{YYMMDD}_{user_id}_{log_number}.log`**  
+  - Writes a **catalog JSON** (`downloaded_catalog.json`) with `source → dest` mappings and basic metadata.
 
-2. **Log Conversion**
-   - Converts downloaded logs into three formats:
-     - `flat`: Flattened key-value structure.
-     - `json-legacy`: JSON format using Anthology's `convertlogs.py` module.
-     - `json-distributed`: Hybrid format (Work In Progress).
+- **Convert**: Converts the downloaded `.txt`/`.gz` logs into a **flat JSON Lines** file (`converted_flat.jsonl`) and generates an **enriched manifest** (`converted_files.json`) per conversion folder.
 
-3. **Search and Filtering**
-   - Provides various search methods tailored to the selected format and log type.
-   - Enables host filtering and keyword-based queries.
+- **Analyze**: Presents simple counts by **host** and **log type** from `converted_files.json`, and lets you **download ZIPs** of files by host or log type.
 
-## 🛠 Technologies Used
+---
 
-- Python
-- Streamlit
-- WebDAV client
-- Anthology's `convertlogs.py` module
+## 🧱 Folder Structure
 
-# BB Log Search — Session DB (DuckDB) Add‑On
+After running the app, you’ll typically see:
 
+```
+bb_logs/
+  downloads/
+    <hostabbr>_<YYMMDD_start>_<YYMMDD_end>/
+      251123__6_1_1.log  # example file(s) renamed from sessiondebuglogs
+      downloaded_catalog.json
+  conversions/
+    <selected_download_subfolder>_convert/
+      converted_flat.jsonl
+      converted_files.json
+tool_logs/
+  downloads_YYYYMMDD_HHMMSS.log
+  converting_YYYYMMDD_HHMMSS.log
+pages/
+  download.py
+  convert.py
+  analyze.py
+modules/
+  webdav_client.py
+  download_utils.py
+  convert_utils.py
+  parser_utils.py
+bb_log_tool.py
+```
 
-## What you get
-- Two‑column **Streamlit page** (`pages/search.py`) that:
-  - Discovers runs via `converted_files.json`
-  - Builds a **type inventory** before enabling the log type selector
-  - Provides a **Create / Overwrite search database** button
-  - Runs **structured queries** and optional **FTS (free‑text)** queries against the DB
-- Utilities in `modules/search_utils.py` to:
-  - Read the index robustly (JSON or whitespace list)
-  - Build inventories by log type
-  - Parse json‑distributed logs into a **DuckDB** file (`.searchdb/<session>/<log_type>.duckdb`)
-  - Query the DB with structured filters or BM25 (FTS)
-- Updated `modules/parser_utils.py` filename patterns to recognize your converted JSON names
+> The **Convert** page looks for subfolders under `bb_logs/downloads/` and writes its output to `bb_logs/conversions/<selected>_convert/`.
 
+---
 
+## 🚀 Quick Start
 
-## How it works
-1. Pick a **conversion directory** (must contain `converted_files.json`).
-2. The page scans the index to build a **type inventory** (no file I/O yet).
-3. Pick a **log type** → click **Create / Overwrite search database**.
-   - This parses the selected files once and writes a session DB here:
-     ```
-     <conversion_dir>/.searchdb/<session_id>/<log_type>.duckdb
-     ```
-   - It also tries to build a small **FTS index** over `message`.
-4. Run **Structured** or **FTS** searches against the DB.
+### 1) Install prerequisites (Python 3.11+ recommended)
 
-## Notes
-- The DB is **session‑specific** to avoid collisions; feel free to pin a session id via `BB_SEARCH_SESSION_ID` env var if needed.
-- For very large runs, consider building only a date window or moving to a Parquet‑backed design later. The current approach is optimized for fast, local exploration with minimal setup.
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+> The app uses only local file I/O and WebDAV—no database required.
+
+### 2) Run the app
+
+```bash
+streamlit run bb_log_tool.py
+```
+
+Streamlit will open a browser tab. Use the **sidebar** to navigate between:
+
+- **Download Logs**
+- **Convert Logs**
+- **Analyze Logs**
+
+---
+
+## ⚙️ Usage
+
+### A) Download Logs
+
+1. **Host**: e.g., `https://nahe.blackboard.com`  
+2. **Base Path**: `/bbcswebdav/internal/sessiondebuglogs`  
+3. **Start / End date**: Use calendar pickers (inclusive).
+4. **Base Download Folder**: defaults to `./bb_logs/downloads`.
+
+The tool will create a subfolder named:
+
+```
+<hostabbr>_<YYMMDD_start>_<YYMMDD_end>/
+```
+
+Inside that folder it will save:
+- Renamed logs: `{YYMMDD}_{user_id}_{log_number}.log`
+- **`downloaded_catalog.json`** (source/dest, simple header metadata)
+
+> Connection is verified via WebDAV root listing. If your environment uses different auth or a non-standard path, adjust in **Download Logs** UI.
+
+---
+
+### B) Convert Logs (Flat Only)
+
+1. Select a **downloaded subfolder** under `bb_logs/downloads`.
+2. The page shows the **Final Conversion Folder** (e.g., `bb_logs/conversions/<selected>_convert`).
+3. Click **Convert to Flat**.
+
+Outputs:
+- **`converted_flat.jsonl`**: one JSON record per input file (path, file_name, size, log_type, content)
+- **`converted_files.json`**: enriched manifest (path, host, log_type, timestamp)
+
+> Gzipped (`.gz`) files are decompressed on the fly; originals are removed after decompression.
+
+---
+
+### C) Analyze Logs
+
+1. Select a **conversion folder** (the `_convert` subfolder).
+2. See summary tables:
+   - Count by **Host**
+   - Count by **Log Type**
+3. Optionally download **ZIPs** of files by host or log type.
+
+> The page clears `user_downloads` ZIPs at session start for housekeeping.
+
+---
+
+## 🧩 Data Formats
+
+### `downloaded_catalog.json` (example)
+
+```json
+{
+  "count": 42,
+  "records": [
+    {
+      "source": "/bbcswebdav/internal/sessiondebuglogs/251123/_6_1/2.log",
+      "dest": "bb_logs/downloads/nahe_251123_251123/251123__6_1_2.log",
+      "yymmdd": "251123",
+      "user_id": "_6_1",
+      "log_number": 2,
+      "site_domain": "nahe.blackboard.com",
+      "user_agent": "Mozilla/5.0 ...",
+      "export_timestamp": "2025-11-23T14:59:00Z"
+    }
+  ]
+}
+```
+
+### `converted_files.json` (example)
+
+```json
+[
+  {
+    "path": "bb_logs/conversions/demo_2025112315_2025112316_convert/2025.11.23.15.ip-10-146-233-231.ec2.internal.txt",
+    "host": "ip-10-146-233-231.ec2.internal",
+    "log_type": "unknown",
+    "timestamp": "2025.11.23.15"
+  }
+]
+```
+
+---
+
+## 🔧 Configuration Notes
+
+- **WebDAV client**: Uses `webdav3.client.Client`.  
+  - The downloader calls `client.download(remote_path=..., local_path=...)` and falls back to `client.download_sync(...)` if needed.
+- **Date handling**: Dates are normalized to `datetime.date` to avoid comparison bugs.
+- **YYMMDD folder validation**: Non-YYMMDD leaf names under `base_path` trigger an error (by design).
+- **Max folders**: Defensively guards against >35 YYMMDD folders (per trust rule).
+
+---
+
+## 🛠️ Troubleshooting
+
+- **“Unable to connect to WebDAV”**  
+  Check host format (`https://...`), credentials, and whether your WebDAV root listing is permitted.
+
+- **Download preview shows an old date**  
+  The destination folder preview is derived from Start/End date inputs and Host. Update inputs and the preview updates immediately.
+
+- **Convert doesn’t list my downloaded folder**  
+  Ensure the Download page wrote into `./bb_logs/downloads/<subfolder>/`. The Convert page lists first-level subfolders under `bb_logs/downloads/`.
+
+- **Large `converted_flat.jsonl`**  
+  The converter stores full content of each file. Trim or omit `content` for smaller files if needed.
+
+---
+
+## 🧪 Development Tips
+
+- **Reset session**: Use the sidebar “Utilities → Reset session” to clear `st.session_state`.
+- **Logs**: See `./tool_logs/downloads_*.log` and `./tool_logs/converting_*.log`.
+- **Package imports**: Both `modules/` and `pages/` include `__init__.py` so dynamic imports work.
+
+---
+
+## 📦 Requirements
+
+See `requirements.txt` for installable packages. The tool assumes **Python 3.11+**.
