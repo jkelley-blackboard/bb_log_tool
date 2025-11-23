@@ -1,15 +1,12 @@
 # Blackboard Log Tool (bb_log_tool)
 
 A lightweight, Streamlit-based utility for **downloading**, **converting**, and **analyzing** Blackboard session logs.  
-It wraps a simple WebDAV workflow (for `sessiondebuglogs`), a flat converter, and a basic analysis UI.
 
 ---
 
 ## ✨ What it does
 
-- **Download**: Scans `YYMMDD` folders under `/bbcswebdav/internal/sessiondebuglogs`, iterates all user subfolders, and downloads log files named `N.log`.  
-  - Renames each downloaded file as: **`{YYMMDD}_{user_id}_{log_number}.log`**  
-  - Writes a **catalog JSON** (`downloaded_catalog.json`) with `source → dest` mappings and basic metadata.
+- **Download**: Authenticates and collects the .gz logs based on time/date range inputs.  Dry run option calculates total file size and time to download approximation. 
 
 - **Convert**: Converts the downloaded `.txt`/`.gz` logs into a **flat JSON Lines** file (`converted_flat.jsonl`) and generates an **enriched manifest** (`converted_files.json`) per conversion folder.
 
