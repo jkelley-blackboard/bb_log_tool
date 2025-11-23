@@ -11,10 +11,8 @@ The application consists of three main components:
    - Downloads log packages based on a user-specified date range.
 
 2. **Log Conversion**
-   - Converts downloaded logs into three formats:
-     - `flat`: Flattened key-value structure.
-     - `json-legacy`: JSON format using Anthology's `convertlogs.py` module.
-     - `json-distributed`: Hybrid format (Work In Progress).
+   - Converts downloaded logs into flattened text fileskey-value structure.
+     - (considering work to build other formats)
 
 3. **Search and Filtering**
    - Provides various search methods tailored to the selected format and log type.
