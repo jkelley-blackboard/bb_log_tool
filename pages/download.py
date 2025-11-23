@@ -8,6 +8,7 @@ import shutil
 import requests
 import re
 import logging
+import time
 
 from modules.webdav_client import get_client, test_connection
 from modules.download_utils import (
@@ -104,7 +105,7 @@ def run():
         auto_subfolder_name = f"{host_abbr}_{start_str}_{end_str}"
         final_download_path = os.path.join(download_root, auto_subfolder_name)
 
-        st.markdown(f"**Final Destination Folder:** `{final_download_path}`")
+        st.markdown(f"**Destination Folder:** `{final_download_path}`")
 
         # --- Action buttons ---
         button_col_left, button_col_right = st.columns([1, 1])
@@ -119,7 +120,7 @@ def run():
             - Logs become available 4 hours after the hour ends.<br>
             - Select the correct server timezone to match Blackboard.<br>
             - Use Dry Run first to confirm files before downloading.<br>
-            - The Final Destination Folder shows where files will be stored.<br>
+            - The Destination Folder shows where files will be stored.<br>
             </div>
             """, unsafe_allow_html=True)
 
@@ -213,17 +214,24 @@ def run():
         if clear_downloads_btn:
             if os.path.exists(download_root):
                 try:
-                    # Iterate over all items in the download root
+                    time.sleep(1)  # Give OS time to release file handles
+                    locked_files = []
                     for filename in os.listdir(download_root):
                         file_path = os.path.join(download_root, filename)
-                        if os.path.isfile(file_path) or os.path.islink(file_path):
-                            os.unlink(file_path)  # remove file or link
-                        elif os.path.isdir(file_path):
-                            shutil.rmtree(file_path)  # remove subdirectory
-                    st.success(f"All downloads cleared from: {download_root}")
+                        try:
+                            if os.path.isfile(file_path) or os.path.islink(file_path):
+                                os.unlink(file_path)
+                            elif os.path.isdir(file_path):
+                                shutil.rmtree(file_path)
+                        except Exception as e:
+                            locked_files.append(file_path)
+                    if locked_files:
+                        st.warning(f"Some files could not be deleted: {locked_files}")
+                    else:
+                        st.success(f"All downloads cleared from: {download_root}")
                 except Exception as e:
                     st.error(f"Failed to clear downloads: {e}")
             else:
-                st.warning("No download folder found to clear.")
+                st.warning("No download folder found to clear.")        
 
         st.markdown('</div>', unsafe_allow_html=True)
