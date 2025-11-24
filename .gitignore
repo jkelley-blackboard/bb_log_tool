@@ -1,3 +1,5 @@
 # Ignore all files in these directories
 bb_logs/
 tool_logs/
+modules/__pycache__/
+pages/__pycache__/
