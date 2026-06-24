@@ -32,4 +32,8 @@ python convertlogs.py -f log_packages_IN -o text_logs_OUT
 - `decompress_logs()` used `path.rstrip('.gz')` to drop the `.gz` suffix, which strips trailing `g`/`z`/`.` characters rather than the suffix itself — harmless for normal Blackboard filenames, but silently truncates anything else ending in those characters. Fixed to slice off the literal suffix.
 - `convert_file()` caught all exceptions around JSON parsing, which meant a parsed entry missing an expected field (`host`, `path`, `message`) would be silently dropped instead of surfacing as an error. Narrowed to only swallow `json.JSONDecodeError` (expected when a log entry spans multiple lines).
 
-Use `convertlogs_patched.py` in place of `convertlogs.py` with the same `-f`/`-o`/`-t` arguments if you want these fixes.
+Use `convertlogs_patched.py` in place of `convertlogs.py` with the same `-f`/`-o`/`-t` arguments if you want these fixes. `runme_patched.bat` is the equivalent of `run_me.bat` for the patched script:
+
+```bat
+python convertlogs_patched.py -f log_packages_IN -o text_logs_OUT
+```
