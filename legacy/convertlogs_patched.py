@@ -10,6 +10,12 @@ copy in convertlogs.py by:
   - narrowing convert_file()'s bare except so malformed/missing fields (e.g. a
     log entry missing 'host', 'path', or 'message') raise instead of being
     silently skipped alongside genuine JSON parse failures
+  - validating -t/--output_type against a fixed set of choices instead of
+    silently treating any unrecognized value as flat output
+  - exiting with a non-zero status when precondition checks fail, so calling
+    scripts/scheduled tasks can detect failure
+  - adding -k/--keep-originals to skip deleting source .gz files after
+    decompression
 """
 #!/usr/bin/python3
 
@@ -33,7 +39,9 @@ def get_args(args):
     parser = argparse.ArgumentParser(description=version)
     parser.add_argument("-f", "--file_path", required=True)
     parser.add_argument("-o", "--output", required=True)
-    parser.add_argument("-t", "--output_type")
+    parser.add_argument("-t", "--output_type", choices=["flat", "json"], default="flat")
+    parser.add_argument("-k", "--keep-originals", action="store_true",
+                         help="Don't delete source .gz files after decompression.")
     return parser.parse_args(args)
 
 def check_preconditions(input_path, output):
@@ -60,10 +68,10 @@ def to_list(path):
 
     return file_paths
 
-def decompress_logs(file_paths):
+def decompress_logs(file_paths, keep_originals=False):
     """
     Decompresses all the logs found in the path.
-    Deletes the original .gz files.
+    Deletes the original .gz files, unless keep_originals is True.
     """
     all_paths = set(file_paths)
     compressed_files = set(path for path in all_paths if path.endswith('.gz'))
@@ -76,8 +84,9 @@ def decompress_logs(file_paths):
                 decomp.write(comp.read())
                 decompressed_files.add(decompressed)
 
-    for comp in compressed_files:
-        os.remove(comp)
+    if not keep_originals:
+        for comp in compressed_files:
+            os.remove(comp)
 
     return list(decompressed_files)
 
@@ -209,13 +218,13 @@ def convert(file_paths, output_directory, output_type=None):
         for path in newpaths:
             convert_file(path, writer)
 
-def decompress_and_convert(file_path, output_directory, output_type=None):
+def decompress_and_convert(file_path, output_directory, output_type=None, keep_originals=False):
     """
     Takes the path to the log or directory of logs to be converted
     and decompresses and coverts them.
     """
     logs = to_list(file_path)
-    ready_to_covert = decompress_logs(logs)
+    ready_to_covert = decompress_logs(logs, keep_originals)
     convert(ready_to_covert, output_directory, output_type)
 
 def main():
@@ -224,13 +233,15 @@ def main():
     file_path = args.file_path
     output_folder = args.output
     output_type = args.output_type
+    keep_originals = args.keep_originals
 
     error_messages = check_preconditions(file_path, output_folder)
 
     if not error_messages:
-        decompress_and_convert(file_path, output_folder, output_type)
+        decompress_and_convert(file_path, output_folder, output_type, keep_originals)
     else:
         print(error_messages)
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
