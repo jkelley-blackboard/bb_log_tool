@@ -14,9 +14,26 @@ A lightweight, Streamlit-based utility for **downloading**, **converting**, and 
 
 ---
 
-## 🧱 Folder Structure
+## 🧱 Repository Layout
 
-After running the app, you’ll typically see:
+```
+streamlit_app/      # the Streamlit tool covered by this README
+  bb_log_tool.py
+  pages/
+    download.py
+    convert.py
+    analyze.py
+  modules/
+    webdav_client.py
+    download_utils.py
+    convert_utils.py
+    parser_utils.py
+  requirements.txt
+legacy/              # standalone "supported" convertlogs.py CLI script + instructions
+docs/                # practitioner guide to Blackboard logs
+```
+
+After running the app from `streamlit_app/`, it creates these alongside it:
 
 ```
 bb_logs/
@@ -31,16 +48,6 @@ bb_logs/
 tool_logs/
   downloads_YYYYMMDD_HHMMSS.log
   converting_YYYYMMDD_HHMMSS.log
-pages/
-  download.py
-  convert.py
-  analyze.py
-modules/
-  webdav_client.py
-  download_utils.py
-  convert_utils.py
-  parser_utils.py
-bb_log_tool.py
 ```
 
 > The **Convert** page looks for subfolders under `bb_logs/downloads/` and writes its output to `bb_logs/conversions/<selected>_convert/`.
@@ -58,7 +65,7 @@ python -m venv .venv
 # macOS/Linux
 source .venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r streamlit_app/requirements.txt
 ```
 
 > The app uses only local file I/O and WebDAV—no database required.
@@ -66,8 +73,11 @@ pip install -r requirements.txt
 ### 2) Run the app
 
 ```bash
+cd streamlit_app
 streamlit run bb_log_tool.py
 ```
+
+> Run it from inside `streamlit_app/` so the `bb_logs/` and `tool_logs/` output folders land there rather than at the repo root.
 
 Streamlit will open a browser tab. Use the **sidebar** to navigate between:
 
@@ -159,4 +169,4 @@ Outputs:
 
 ## 📦 Requirements
 
-See `requirements.txt` for installable packages. The tool assumes **Python 3.11+**.
+See `streamlit_app/requirements.txt` for installable packages. The tool assumes **Python 3.11+**.

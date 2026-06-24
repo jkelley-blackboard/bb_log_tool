@@ -1,0 +1,67 @@
+Jeff's unofficial guide to working with Learn logs
+
+Create an easy to repeat method for getting learn logs, converting them and examining.
+
+Note that this guide assumes:
+ - you are authorized to install software on your PC.
+	- Python is required:  https://www.python.org/downloads/
+	- Notepad++ is optional:  https://notepad-plus-plus.org/downloads/
+ - you are willing/able to execute some basic command-line (aka terminal window) actions on your PC. 
+
+
+Learn application generates text logs.
+They are bundled into .gz formatted packages - one for each application server for each hour.
+They are delivered to the Content Collection 3+ hours later.
+The folder structure is based on UTC time  (i.e. 2022/09/20/14 will contatin the logs from the 2pm hour UTC)
+You have to do the timezone math to get the right folder(s).  
+
+EX. 
+  The /14 directory is created at 1:35PM EDT
+  The /14 directory has logs from 9AM to 10AM EDT
+
+Anthology provides a command-line script written in Python which will convert the compressed files into individual text-based log files.
+
+Step 1 is to set up a location on your PC where you can repeat this conversion process easily.
+
+
+Setup:
+
+Create/identify a location for this work.
+	 - Folder "Log_Extracting"
+	 - Subfolders "log_packages_IN" and "text_logs_OUT"
+	 - effective practice: avoid spaces if you can
+
+Install Python
+	 - https://www.python.org/downloads/
+	 - Make note of where python.exe is installed  (Ex.C:\Python\Python39\python.exe) 
+	 - Suggest that you choose NOT to add Python to the system path, but not critical.
+
+Install Notepad++ (option)
+
+
+Download the conversion script (convertlogs.py) from Learn and put it in Log_Extracting
+	 - System Admin -> Logs -> System Logs -> "Download Convert Logs script"
+
+Create "batch" script, so you don't have to repeatedly type the command.
+	 - C:\Python\Python39\python.exe convertlogs.py -f log_packages_IN -o text_logs_OUT
+
+
+Download the logs
+
+Note that the packages and individual files can be quite large for big, busy deployments.
+Consider every option to limit the time period for which you are downloading
+
+	- System Admin -> Logs -> System Logs -> select a date
+	- System Admin -> Managed Content -> internal -> logs -> (year) -> (month) -> (day) -> (hour UTC)
+
+	- Select, multi0-select and "download package"
+	
+	...day.zip  (ex.  27.zip)
+	
+	move to log_packages_IN
+	expand it to folder  (eg. /27)
+	
+	
+	Command line...  run the batch file
+	
+	
