@@ -8,7 +8,7 @@ A lightweight, Streamlit-based utility for **downloading**, **converting**, and 
 
 - **Download**: Authenticates and collects the .gz logs based on time/date range inputs.  Dry run option calculates total file size and time to download approximation.
 
-- **Convert**: Converts the downloaded `.txt`/`.gz` logs into a **flat JSON Lines** file (`converted_flat.jsonl`) and generates an **enriched manifest** (`converted_files.json`) per conversion folder.
+- **Convert**: Decompresses/converts the downloaded `.txt`/`.gz` logs into per-host, per-path text files mirroring the Blackboard server's own log layout, and generates an **enriched manifest** (`converted_files.json`) per conversion folder.
 
 - **Analyze**: Presents simple counts by **host** and **log type** from `converted_files.json`, and lets you **download ZIPs** of files by host or log type.
 
@@ -35,12 +35,11 @@ Running the app creates these alongside it:
 ```
 bb_logs/
   downloads/
-    <hostabbr>_<YYMMDD_start>_<YYMMDD_end>/
-      251123__6_1_1.log  # example file(s) renamed from sessiondebuglogs
-      downloaded_catalog.json
+    <hostabbr>_<YYYYMMDDHH_start>_<YYYYMMDDHH_end>/
+      2026.2.5.14.ip-10-146-230-16.ec2.internal.txt  # original WebDAV filenames, unmodified
   conversions/
     <selected_download_subfolder>_convert/
-      converted_flat.jsonl
+      <host>/<original server path>/...              # per-host, per-path text logs
       converted_files.json
 tool_logs/
   downloads_YYYYMMDD_HHMMSS.log
@@ -88,21 +87,22 @@ Streamlit will open a browser tab. Use the **sidebar** to navigate between:
 ### A) Download Logs
 
 1. **Host**: e.g., `https://nahe.blackboard.com`
-2. **Base Path**: `/bbcswebdav/internal/sessiondebuglogs`
-3. **Start / End date**: Use calendar pickers (inclusive).
-4. **Base Download Folder**: defaults to `./bb_logs/downloads`.
+2. **Username / Password**: WebDAV credentials for that host.
+3. **Server Time Zone**: defaults to your local timezone; set this to the Blackboard server's timezone so the start/end hour selectors line up with the server's UTC offset.
+4. **Start / End date and hour**: Defaults to the most recent hour that should be available (server time minus the ~4-hour log delay).
+5. **Base Download Folder**: defaults to `./bb_logs/downloads`.
+
+The remote path is hardcoded to `bbcswebdav/internal/logs/<year>/<month>/<day>/<hour>/` (see `modules/download_utils.py::build_remote_path`) — it is not user-configurable in the UI.
 
 The tool will create a subfolder named:
 
 ```
-<hostabbr>_<YYMMDD_start>_<YYMMDD_end>/
+<hostabbr>_<YYYYMMDDHH_start>_<YYYYMMDDHH_end>/
 ```
 
-Inside that folder it will save:
-- Renamed logs: `{YYMMDD}_{user_id}_{log_number}.log`
-- **`downloaded_catalog.json`** (source/dest, simple header metadata)
+Files are saved into that folder under their original WebDAV filename — nothing is renamed, and no catalog/manifest file is written at download time (the manifest is generated later, at conversion time).
 
-> Connection is verified via WebDAV root listing. If your environment uses different auth or a non-standard path, adjust in **Download Logs** UI.
+> Connection is verified via WebDAV root listing. If your environment uses different auth, adjust credentials in the **Download Logs** UI.
 
 ---
 
@@ -110,7 +110,7 @@ Inside that folder it will save:
 
 1. Select a **downloaded subfolder** under `bb_logs/downloads`.
 2. The page shows the **Final Conversion Folder** (e.g., `bb_logs/conversions/<selected>_convert`).
-3. Click **Convert to Flat**.
+3. Click **Convert Logs**.
 
 Outputs:
 - **conversion folder**:
@@ -128,17 +128,15 @@ Outputs:
    - Count by **Log Type**
 3. Optionally download **ZIPs** of files by host or log type.
 
-> The page clears `user_downloads` ZIPs at session start for housekeeping.
+> By default the page builds ZIPs in memory (nothing touches disk). If `USE_IN_MEMORY_ZIP` in `pages/analyze.py` is set to `False`, ZIPs are written to `user_downloads/` instead, and a manual "Clear user_downloads ZIPs" button appears for housekeeping.
 
 ---
 
 ## 🔧 Configuration Notes
 
-- **WebDAV client**: Uses `webdav3.client.Client`.
-  - The downloader calls `client.download(remote_path=..., local_path=...)` and falls back to `client.download_sync(...)` if needed.
-- **Date handling**: Dates are normalized to `datetime.date` to avoid comparison bugs.
-- **YYMMDD folder validation**: Non-YYMMDD leaf names under `base_path` trigger an error (by design).
-- **Max folders**: Defensively guards against >35 YYMMDD folders (per trust rule).
+- **WebDAV client**: Uses `webdav3.client.Client` (`modules/webdav_client.py`).
+  - The downloader calls `client.info()` per file to size it, then `client.download_sync(...)` when not in dry-run mode.
+- **Remote path**: Hardcoded to `bbcswebdav/internal/logs/YYYY/MM/DD/HH/`, walked one hour at a time between the selected start/end. There is no folder-count or filename-pattern validation — a large date range just means more WebDAV `list()` calls.
 
 ---
 

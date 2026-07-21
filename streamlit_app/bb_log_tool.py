@@ -66,9 +66,9 @@ def main() -> None:
     pages = PAGES
 
     # Initialize session state from query params if provided (deep-linking)
-    # NOTE: replaced deprecated experimental_get_query_params with st.query_params
-    query_params = st.query_params
-    initial_page = query_params.get("page", [None])[0] if query_params else None
+    # st.query_params is a plain str->str mapping (unlike the old
+    # experimental_get_query_params, which returned str->list[str]).
+    initial_page = st.query_params.get("page")
 
     default_page = st.session_state.get("current_page", initial_page or list(pages.keys())[0])
     if default_page not in pages:
@@ -82,11 +82,7 @@ def main() -> None:
     # Persist selected page in session state and sync to query params for deep linking / sharing
     if st.session_state.get("current_page") != page_label:
         st.session_state["current_page"] = page_label
-        try:
-            st.experimental_set_query_params(page=page_label)
-        except Exception:
-            # Not critical; query params are optional
-            logger.debug("Could not set query params for page selection")
+        st.query_params["page"] = page_label
 
     # Developer utilities
     with st.sidebar.expander("Utilities"):
@@ -118,7 +114,7 @@ def main() -> None:
                     st.cache_data.clear()
                 except Exception:
                     logger.debug("Could not clear cache during session reset")
-                st.experimental_rerun()
+                st.rerun()
 
     # Page routing (lazy import + friendly errors)
     module_name = pages[page_label]

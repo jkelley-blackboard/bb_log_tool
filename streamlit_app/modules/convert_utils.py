@@ -14,7 +14,7 @@ from modules.parser_utils import detect_log_type
 def decompress_file(file_path):
     """Decompress .gz files and remove originals."""
     if file_path.endswith('.gz'):
-        decompressed_path = file_path.rstrip('.gz')
+        decompressed_path = file_path[:-len('.gz')]
         with gzip.open(file_path, 'rb') as f_in:
             with open(decompressed_path, 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
