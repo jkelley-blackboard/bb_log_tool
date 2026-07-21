@@ -89,6 +89,8 @@ For incidents spanning multiple hours, download all relevant hour folders into t
 python3 convertlogs.py -f ~/Downloads/Logs -o ~/LearnLogs -t json
 ```
 
+If you want to browse this JSON output in a GUI tree viewer rather than `jq`/`grep`, see **[docs/viewing-raw-json.md](./viewing-raw-json.md)** — it covers the viewer options and the one format gotcha (newline-delimited JSON vs. a single JSON document) that trips people up.
+
 ---
 
 ## 5. Reading the Output

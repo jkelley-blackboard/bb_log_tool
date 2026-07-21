@@ -13,4 +13,6 @@ legacy/          Blackboard's officially supported convertlogs.py CLI script, fo
 
 docs/            Practitioner guide to Blackboard logs: where they live, timestamp/UTC
                  gotchas, and what each log file means. See docs/blackboard-logs-guide.md.
+                 docs/viewing-raw-json.md is a companion guide covering how to view
+                 convertlogs.py's JSON-mode output in a JSON tree viewer.
 ```
